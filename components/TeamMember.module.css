@@ -1,0 +1,38 @@
+.card {
+  width: 360px;
+  height: 120px;
+  display: flex;
+  margin: 16px;
+}
+.cardImage {
+  width: 120px;
+  height: 120px;
+}
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+}
+.name {
+  text-align: left;
+
+  display: block;
+  opacity: 100%;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.role {
+  font-size: 16px;
+}
+.links {
+  display: flex;
+  align-items: center;
+}
+.logoLink {
+  padding-right: 8px;
+  opacity: 75%;
+}
+.logoLink:hover {
+  opacity: 100%;
+}
