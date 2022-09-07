@@ -12,6 +12,10 @@
   font-size: 24px;
 }
 
+.headerTitle:hover {
+  opacity: 100%;
+}
+
 .logoLinks {
   display: flex;
   align-items: center;

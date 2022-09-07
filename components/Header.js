@@ -7,7 +7,11 @@ import Link from 'next/link'
 export default function Header() {
   return (
     <div className={styles.header}>
-      <span className={styles.headerTitle}>BLS Wallet</span>
+      <Link href="/">
+        <a>
+          <span className={styles.headerTitle}>BLS Wallet</span>
+        </a>
+      </Link>
       <div className={styles.logoLinks}>
         <Link href="https://discord.gg/AddBwR4ZTz">
           <a
