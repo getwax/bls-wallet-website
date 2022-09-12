@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
-import walletLogo from '../public/walletLogo.svg'
+import walletLogo from '../public/walletLogo.png'
 import Link from 'next/link'
 import FeatureCard from '../components/FeatureCard'
 import TeamMember from '../components/TeamMember'
@@ -17,9 +17,20 @@ export default function Home() {
       <Header />
       <div className={styles.main}>
         <Fade bottom>
-          <Image src={walletLogo} alt="an illustration of a wallet" />
+          <Image
+            src={walletLogo}
+            alt="an illustration of a wallet"
+            width={200}
+            height={200}
+          />
           <h1 className={styles.title}>Reduce transaction fees on evm-L2s</h1>
-          <p style={{ maxWidth: '760px', fontSize: '20px' }}>
+          <p
+            style={{
+              maxWidth: '760px',
+              fontSize: '20px',
+              color: 'rgba(255,255,255,0.75)',
+            }}
+          >
             Compress transactions with BLS signature aggregation. Our smart
             contract wallet also introduces recovery, multi-action, gasless
             transactions and upgradeability.
