@@ -58,6 +58,22 @@
   border: 1px solid rgba(255, 255, 255, 1);
 }
 
+.demoButton {
+  cursor: pointer;
+  width: 160px;
+  height: 40px;
+  margin: 8px;
+  background-color: #771cf9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+}
+
+.demoButton:hover {
+  background-color: #700cff;
+}
+
 .features {
   display: flex;
   flex-wrap: wrap;
@@ -68,4 +84,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition-duration: 1.5s;
+}
+.fadeOut {
+  opacity: 0;
+  transition-duration: 1.5s;
 }
