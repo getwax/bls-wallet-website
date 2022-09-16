@@ -327,15 +327,6 @@ export default function Demo() {
   )
 }
 
-// we need to show
-// (1) multi action (use Kautuk as inspiration, there may be a defi swap)
-// but the minting has to take place behind the scenes
-// approving token transfer on the ERC20 contract, granting permission to the swap contract address
-// calling the swap function on the swap contract
-// and draw attention to the security benefit of not giving infinite permission to transfer unlimited funds
-// (2) dapp sponsored tx (Kautuk might know more about this)
-// (3) wallet upgradability via key recovery (Blake currently working on, will have something to do with persisting key in local storage like Blake did)
-
 // Steps to improve
 // 1. ✅ Clean up frontend
 // 2. ❌ Include demo of 'without multi-action'
