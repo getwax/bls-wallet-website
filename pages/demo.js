@@ -8,14 +8,23 @@ import Fade from 'react-reveal'
 import Swal from 'sweetalert2'
 
 export default function Demo() {
-  // You will need to change this to Goerli eventually
+  // For Goerli development
   const [network, setNetwork] = useState({
-    chainId: '421611',
-    name: 'Arbitrum Rinkeby',
-    rpcUrl: 'https://rinkeby.arbitrum.io/rpc',
-    aggregatorUrl: 'https://arbitrum-testnet.blswallet.org',
-    verificationGateway: '0x697B3E6258B08201d316b31D69805B5F666b62C8',
+    chainID: '0x66EED',
+    name: 'Arbitrum Goerli',
+    rpcUrl: 'https://goerli-rollup.arbitrum.io/rpc',
+    aggregatorUrl: 'https://arbitrum-goerli.blswallet.org',
+    verificationGateway: '0xAf96d6e0817Ff8658f0E2a39b641920fA7fF0957',
   })
+
+  // For Arbitrum Rinkeby development
+  // const [network, setNetwork] = useState({
+  //   chainId: '421611',
+  //   name: 'Arbitrum Rinkeby',
+  //   rpcUrl: 'https://rinkeby.arbitrum.io/rpc',
+  //   aggregatorUrl: 'https://arbitrum-testnet.blswallet.org',
+  //   verificationGateway: '0x697B3E6258B08201d316b31D69805B5F666b62C8',
+  // })
 
   // For local development
   // const [network, setNetwork] = useState({
@@ -41,8 +50,10 @@ export default function Demo() {
 
   // Connect to the token contract that Kautuk deployed and store it in state
 
-  // For remote development
-  const erc20Address = '0x6030c15cD584574A5C694984678D50e5E9Aee1b6'
+  // For remote goerli development
+  const erc20Address = '0x56377a667C6370154d43aFc937998C750f0ca9bd'
+  // For remote rinkeby development
+  // const erc20Address = '0x6030c15cD584574A5C694984678D50e5E9Aee1b6'
   // For local development
   // const erc20Address = '0x5FC8d32690cc91D4c39d9d3abcBD16989F875707'
 
@@ -61,8 +72,11 @@ export default function Demo() {
   const [firstMint, setFirstMint] = useState(false)
 
   // Connect to the spending contract that Kautuk deployed
+
+  // For remote goerli development
+  const spenderContractAddress = '0x95B02CcF67ceacaBbc33927a5d7607Df590c81F6'
   // For remote development on Arbitrum Rinkeby
-  const spenderContractAddress = '0xBeC869B56cF9835E26f16f7E29E1e4Ba324634b8'
+  // const spenderContractAddress = '0xBeC869B56cF9835E26f16f7E29E1e4Ba324634b8'
   // For local development [YET TO DEPLOY LOCAL CONTRACTS]
   // const spenderContractAddress = ''
   const spenderContractAbi = ['function pullTokens(address,uint256)']
@@ -86,7 +100,7 @@ export default function Demo() {
     // Call the token contract to mint some tokens
   }, [])
 
-  const pollBalance = (wallet) => {
+  const pollBalance = async (wallet) => {
     const originalBalance = balance
     const interval = setInterval(async function () {
       console.log('polling...')
@@ -101,44 +115,50 @@ export default function Demo() {
         clearInterval(interval)
       }
     }, 2000)
+    setTimeout(() => {
+      setBalanceChanging(false)
+      clearInterval(interval)
+      Swal.fire({
+        icon: 'error',
+        title: 'Transaction failed',
+        text: 'Please try again',
+        confirmButtonText: 'Reload page',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.reload()
+        }
+      })
+    }, 30000)
   }
 
   const mint = async (generatedWallet) => {
     console.log('minting...')
     setBalanceChanging(true)
     const bundle = generatedWallet.sign({
-      nonce: await BlsWalletWrapper.Nonce(
-        generatedWallet.PublicKey(),
-        network.verificationGateway,
-        provider,
-      ),
+      nonce: (await generatedWallet.Nonce()).toString(),
       actions: [
         {
           ethValue: 0,
           contractAddress: erc20.address,
           encodedFunction: erc20.interface.encodeFunctionData('mint', [
             generatedWallet.address,
-            ethers.BigNumber.from(10).pow(18),
+            ethers.BigNumber.from(10).pow(20),
           ]),
         },
       ],
     })
-    await aggregator.add(bundle)
+    console.log(await aggregator.add(bundle))
     console.log('mint tx submitted')
-
-    // pollBalance(generatedWallet)
+    pollBalance(generatedWallet)
   }
 
   // On a frontend event, create a transfer and make a fake request for permission
-  const initiateSwap = async () => {
-    console.log('swapping...')
+  const approveAndPullTokens = async () => {
+    console.log('approving / pulling...')
     setBalanceChanging(true)
+    console.log(await wallet.Nonce())
     const bundle = wallet.sign({
-      nonce: await BlsWalletWrapper.Nonce(
-        wallet.PublicKey(),
-        network.verificationGateway,
-        provider,
-      ),
+      nonce: (await wallet.Nonce()).toString(),
       actions: [
         {
           ethValue: 0,
@@ -159,97 +179,149 @@ export default function Demo() {
       ],
     })
     await aggregator.add(bundle)
-    console.log('swap tx submitted')
-
+    console.log('approval / pull txs submitted')
     // Store transfer success / failure in state to be represented in the frontend
     pollBalance(wallet)
   }
-
-  // Note that the multi-action is the fact that you would normally ask for (1) permission to see and spend account balance and then also (2) permission to actually do the transfer, which we are compressing
-
-  // TOTHINK: then you will need to show how this works without multi-action in some way too. You could just do the same but ask for permission twice. Or maybe the simplest way is to show a video
-
-  // TOTHINK: the idea could also be for the dapp to sponsor the tx and to showcase wallet upgradability via key recovery but that might be blocked at the moment. find out what is blocking it
-
   return (
     <>
       <Head>
         <title>BLS Wallet</title>
       </Head>
       <Header />
-      <div className={styles.main} style={{ position: 'relative' }}>
-        <h1
-          className={wallet.address ? styles.fadeOut : styles.fadeIn}
-          style={{ position: 'absolute', top: '0' }}
-        >
-          Please wait while we create your BLS wallet on the Arbitrum Testnet.
-        </h1>
-        <h1
-          className={wallet.address ? styles.fadeIn : styles.fadeOut}
-          style={{ marginBottom: '3rem' }}
-        >
-          BLS wallet created on the Arbitrum Testnet.
-        </h1>
-        <p>
-          <strong style={{ opacity: '1' }}>Wallet address: </strong>
-          {!wallet.address && (
-            <img
-              src="loadingSpinner.gif"
-              alt=""
-              style={{ height: '1rem', position: 'relative', top: '2px' }}
-            />
-          )}
-          {wallet.address}
-        </p>
-        <h3>
-          {firstMint ? "We've minted " : "We're also minting "}
-          some BLS test tokens so you can use our multi-action functionality.
-        </h3>
-        <p>
-          <strong style={{ opacity: '1' }}>Balance: </strong>
-          {balanceChanging ? (
-            <img
-              src="loadingSpinner.gif"
-              alt=""
-              style={{ height: '1rem', position: 'relative', top: '2px' }}
-            />
-          ) : (
-            balance
-          )}
-        </p>
-        {balance > 0 && (
-          <button onClick={() => mint(wallet)} disabled={balanceChanging}>
-            mint more tokens
-          </button>
+      <div className={styles.main}>
+        <h1>See the BLS Wallet in action:</h1>
+        <span style={{ height: '40px' }} />
+        <Fade bottom>
+          <div style={{ position: 'relative', width: '100%' }}>
+            {!wallet.address && (
+              <h3>
+                Please wait while we create your BLS wallet on the Goerli
+                Testnet.
+              </h3>
+            )}
+            {wallet.address && !firstMint && (
+              <h3>
+                We created a BLS Wallet for you on the Goerli Testnet and are
+                minting some demo tokens.
+              </h3>
+            )}
+            {wallet.address && firstMint && (
+              <h3>
+                We created a BLS Wallet for you on the Goerli Testnet and have
+                minted some demo tokens.
+              </h3>
+            )}
+          </div>
+        </Fade>
+        <Fade bottom>
+          <div className={styles.grid}>
+            <div className={styles.a}>
+              <strong style={{ opacity: '1' }}>Wallet address:</strong>
+            </div>
+            <div className={styles.b}>
+              {!wallet.address && (
+                <img
+                  src="loadingSpinner.gif"
+                  alt=""
+                  style={{
+                    height: '1rem',
+                    position: 'relative',
+                    top: '2px',
+                  }}
+                />
+              )}
+
+              <span style={{ wordBreak: 'break-all' }}>{wallet.address}</span>
+            </div>
+            <div className={styles.c}>
+              <strong style={{ opacity: '1' }}>Token balance: </strong>
+            </div>
+            <div className={styles.d}>
+              {!firstMint ? (
+                <img
+                  src="loadingSpinner.gif"
+                  alt=""
+                  style={{
+                    height: '1rem',
+                    position: 'relative',
+                    top: '2px',
+                  }}
+                />
+              ) : (
+                <span>{balance}</span>
+              )}
+            </div>
+          </div>
+        </Fade>
+        <span style={{ height: '18px' }} />
+        {firstMint && (
+          <div>
+            <Fade bottom>
+              <h3>
+                When users interact with your dApp, you can sponsor their
+                transactions, and also bundle their permissions into a single
+                wallet request.
+              </h3>
+            </Fade>
+            <span style={{ height: '24px', display: 'block' }} />
+            <Fade bottom>
+              <>
+                {balanceChanging && (
+                  <div className={styles.disabledDemoButton}>
+                    {' '}
+                    <img
+                      src="loadingSpinner.gif"
+                      alt=""
+                      style={{ height: '1rem' }}
+                    />
+                  </div>
+                )}
+                {!balanceChanging && (
+                  <div
+                    className={styles.demoButton}
+                    onClick={() => {
+                      balanceChanging
+                        ? null
+                        : Swal.fire({
+                            html: `<div style="text-align: left"><span style="font-size: 12px">Arbitrum testnet</span><h2>BLS Wallet</h2><h3>$TOKEN for $TOKEN</h3><p><strong>From: </strong>${wallet.address}</p><p><strong>To: </strong>${spenderContract.address}</p><p><strong>Info: </strong><a href="https://blswallet.org/">https://blswallet.org/</a></p><p><strong>Estimated gas fee: </strong>$O <span style="opacity: 1; display: inline; border-radius: 2px; background-color: #bcffbc; border: solid 1px #a5e1a5;font-size: 12px;padding: 2px 4px">dApp sponsored</span></p></div>`,
+                            confirmButtonText: 'Confirm',
+                            denyButtonText: `Reject`,
+                            showCloseButton: true,
+                            showCancelButton: true,
+                            confirmButtonColor: '#771cf9',
+                            position: 'top-end',
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                              approveAndPullTokens()
+                            }
+                          })
+                    }}
+                  >
+                    <span style={{ opacity: '1' }}>Approve & pull 1 token</span>
+                  </div>
+                )}
+              </>
+            </Fade>
+            <div style={{ height: '32px' }} />
+            <Fade bottom delay={5000}>
+              <p style={{ textAlign: 'center' }}>
+                BLS-Wallet is part of{' '}
+                <a
+                  href="https://appliedzkp.org"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Privacy & Scaling Explorations (PSE)
+                </a>
+                , a multidisciplinary team supported by the Ethereum Foundation.
+                PSE explores new use cases for zero knowledge proofs and other
+                cryptographic primitives.
+              </p>
+            </Fade>
+          </div>
         )}
-        <h3>
-          When users interact with your dApp, you can sponsor their transactions
-          and bundle their permissions into a single wallet request. Give it a
-          go:
-        </h3>
-        <div
-          className={styles.demoButton}
-          onClick={() => {
-            // balanceChanging
-            false
-              ? null
-              : Swal.fire({
-                  html: `<div style="text-align: left"><span style="font-size: 12px">Arbitrum testnet</span><h2>BLS Wallet</h2><h3>$TOKEN for $TOKEN</h3><p><strong>From: </strong>${wallet.address}</p><p><strong>To: </strong>${spenderContract.address}</p><p><strong>Info: </strong><a href="https://blswallet.org/">https://blswallet.org/</a></p><p><strong>Estimated gas fee: </strong>$O <span style="opacity: 1; display: inline; border-radius: 2px; background-color: #bcffbc; border: solid 1px #a5e1a5;font-size: 12px;padding: 2px 4px">dApp sponsored</span></p></div>`,
-                  confirmButtonText: 'Confirm',
-                  denyButtonText: `Reject`,
-                  showCloseButton: true,
-                  showCancelButton: true,
-                  confirmButtonColor: '#771cf9',
-                  position: 'top-end',
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    initiateSwap
-                  }
-                })
-          }}
-        >
-          Initiate swap
-        </div>
+        <div style={{ height: '80px' }} />
       </div>
     </>
   )
@@ -265,25 +337,17 @@ export default function Demo() {
 // (3) wallet upgradability via key recovery (Blake currently working on, will have something to do with persisting key in local storage like Blake did)
 
 // Steps to improve
-// 1. Clean up frontend
-// 2. Include demo of 'without multi-action'
-// 3. Make it so that the wallet mints automatically on page load
-// 4. Make it so that the balance is polled automatically rather than on a push and a loader is used in the meantime
-// 5. Get aggregator logs so that you can verify if the transfer / minting is working and why / why not
-// 6. Testing library
-// 7. James may want deeper features from Blake's instant wallet including state storage
-// 8. Blogpost
-// 9. Implement prompts for permission to showcase multi-action
-
-// const approveTx = await erc20
-//   .connect(provider.getSigner(wallet.address))
-//   .populateTransaction.approve(
-//     '0xBeC869B56cF9835E26f16f7E29E1e4Ba324634b8',
-//     ethers.utils.parseEther('10'),
-//   )
-// const pullTx = await spenderContract
-//   .connect(provider.getSigner(wallet.address))
-//   .populateTransaction.pullTokens(
-//     erc20Address,
-//     ethers.utils.parseEther('10'),
-//   )
+// 1. ✅ Clean up frontend
+// 2. ❌ Include demo of 'without multi-action'
+// 3. ✅ Make it so that the wallet mints automatically on page load
+// 4. ✅ Make it so that the balance is polled automatically rather than on a push and a loader is used in the meantime
+// 5. ✅ Get aggregator logs so that you can verify if the transfer / minting is working and why / why not
+// 6. ❌ Cypress testing library
+// 7. ❌ James may want deeper features from Blake's instant wallet including state storage
+// 8. ❌ Blogpost
+// 9. ✅ Implement prompts for permission to showcase multi-action
+// 10. ✅ Better team pics / names
+// 11. ✅ disable buttons when balance changing
+// 12. ✅ handle infinite load with a failure response when chain requests fail
+// 13. ✅ Move to goerli
+// 14. Debug nonce not incrementing

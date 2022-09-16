@@ -60,9 +60,9 @@
 
 .demoButton {
   cursor: pointer;
-  width: 160px;
+  width: 200px;
   height: 40px;
-  margin: 8px;
+  margin: 8px auto;
   background-color: #771cf9;
   display: flex;
   justify-content: center;
@@ -72,6 +72,17 @@
 
 .demoButton:hover {
   background-color: #700cff;
+}
+
+.disabledDemoButton {
+  width: 200px;
+  height: 40px;
+  margin: 8px auto;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
 }
 
 .features {
@@ -85,12 +96,26 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
-.fadeIn {
-  opacity: 1;
-  transition-duration: 1.5s;
+.grid {
+  display: grid;
+  grid-template-areas: 'a b' 'c d';
+  grid-template-columns: minmax(1fr, 180px) 4fr;
+  column-gap: 16px;
+  max-width: 100%;
 }
-.fadeOut {
-  opacity: 0;
-  transition-duration: 1.5s;
+.a {
+  grid-area: a;
+  text-align: right;
+}
+.b {
+  grid-area: b;
+  text-align: left;
+}
+.c {
+  grid-area: c;
+  text-align: right;
+}
+.d {
+  grid-area: d;
+  text-align: left;
 }

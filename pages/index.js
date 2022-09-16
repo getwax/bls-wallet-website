@@ -42,7 +42,7 @@ export default function Home() {
             <Link href="/demo">
               <a className={styles.button}>
                 <div className={styles.buttonPrimary}>
-                  <span>Try our demo</span>
+                  <span>Try the demo</span>
                 </div>
               </a>
             </Link>
@@ -85,6 +85,14 @@ export default function Home() {
           />
         </div>
         <span style={{ height: '40px' }} />
+        <Link href="/demo">
+          <a className={styles.button}>
+            <div className={styles.buttonPrimary}>
+              <span>Try the demo</span>
+            </div>
+          </a>
+        </Link>
+        <span style={{ height: '40px' }} />
         <Fade bottom>
           <h2 style={{ textAlign: 'center', fontSize: '40px' }}>
             Meet the team
@@ -93,60 +101,44 @@ export default function Home() {
         <span style={{ height: '40px' }} />
         <div className={styles.teamMembers}>
           <TeamMember
-            name="James Zaki"
-            role="Product Lead, BLS Wallet"
-            twitter="https://twitter.com/james_zaki"
-            linkedIn="https://www.linkedin.com/in/jameszaki"
-            telegram="https://t.me/jameszaki"
-            github="https://github.com/jzaki"
-            picturePath="/james.png"
+            name="Jacob Caban-Tomski "
+            role="Software Developer"
+            picturePath="/jacob.png"
+          />
+          <TeamMember
+            name="Kautuk Kundan"
+            role="Software Developer"
+            picturePath="/kautuk.png"
           />
           <TeamMember
             name="James Zaki"
-            role="Product Lead, BLS Wallet"
-            twitter="https://twitter.com/james_zaki"
-            linkedIn="https://www.linkedin.com/in/jameszaki"
-            telegram="https://t.me/jameszaki"
-            github="https://github.com/jzaki"
+            role="Project Lead"
             picturePath="/james.png"
           />
           <TeamMember
-            name="James Zaki"
-            role="Product Lead, BLS Wallet"
-            twitter="https://twitter.com/james_zaki"
-            linkedIn="https://www.linkedin.com/in/jameszaki"
-            telegram="https://t.me/jameszaki"
-            github="https://github.com/jzaki"
-            picturePath="/james.png"
+            name="Blake Duncan"
+            role="Software Developer"
+            picturePath="/blake.png"
           />
           <TeamMember
-            name="James Zaki"
-            role="Product Lead, BLS Wallet"
-            twitter="https://twitter.com/james_zaki"
-            linkedIn="https://www.linkedin.com/in/jameszaki"
-            telegram="https://t.me/jameszaki"
-            github="https://github.com/jzaki"
-            picturePath="/james.png"
+            name="Andrew Morris"
+            role="Software Developer"
+            picturePath="/andrew.png"
           />
           <TeamMember
-            name="James Zaki"
-            role="Product Lead, BLS Wallet"
-            twitter="https://twitter.com/james_zaki"
-            linkedIn="https://www.linkedin.com/in/jameszaki"
-            telegram="https://t.me/jameszaki"
-            github="https://github.com/jzaki"
-            picturePath="/james.png"
-          />
-          <TeamMember
-            name="James Zaki"
-            role="Product Lead, BLS Wallet"
-            twitter="https://twitter.com/james_zaki"
-            linkedIn="https://www.linkedin.com/in/jameszaki"
-            telegram="https://t.me/jameszaki"
-            github="https://github.com/jzaki"
-            picturePath="/james.png"
+            name="John Guilding"
+            role="Software Developer"
+            picturePath="/john.png"
           />
         </div>
+        <span style={{ height: '40px' }} />
+        <Link href="/demo">
+          <a className={styles.button}>
+            <div className={styles.buttonPrimary}>
+              <span>Try the demo</span>
+            </div>
+          </a>
+        </Link>
         <div style={{ height: '80px' }} />
         <p>
           BLS-Wallet is part of{' '}

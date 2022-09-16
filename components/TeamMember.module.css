@@ -3,6 +3,7 @@
   height: 120px;
   display: flex;
   margin: 16px;
+  justify-content: center;
 }
 .cardImage {
   width: 120px;
@@ -12,7 +13,8 @@
   display: flex;
   flex-direction: column;
   padding-left: 16px;
-  flex-grow: 1;
+  width: 50%;
+  justify-content: center;
 }
 .cardHeader {
   display: flex;
@@ -29,15 +31,4 @@
 }
 .role {
   font-size: 16px;
-}
-.links {
-  display: flex;
-  align-items: center;
-}
-.logoLink {
-  padding-right: 8px;
-  opacity: 75%;
-}
-.logoLink:hover {
-  opacity: 100%;
 }
