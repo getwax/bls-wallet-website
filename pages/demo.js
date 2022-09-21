@@ -326,19 +326,3 @@ export default function Demo() {
     </>
   )
 }
-
-// Steps to improve
-// 1. ✅ Clean up frontend
-// 2. ❌ Include demo of 'without multi-action'
-// 3. ✅ Make it so that the wallet mints automatically on page load
-// 4. ✅ Make it so that the balance is polled automatically rather than on a push and a loader is used in the meantime
-// 5. ✅ Get aggregator logs so that you can verify if the transfer / minting is working and why / why not
-// 6. ❌ Cypress testing library
-// 7. ❌ James may want deeper features from Blake's instant wallet including state storage
-// 8. ❌ Blogpost
-// 9. ✅ Implement prompts for permission to showcase multi-action
-// 10. ✅ Better team pics / names
-// 11. ✅ disable buttons when balance changing
-// 12. ✅ handle infinite load with a failure response when chain requests fail
-// 13. ✅ Move to goerli
-// 14. Debug nonce not incrementing
