@@ -60,7 +60,7 @@ export default function Demo() {
   const erc20Abi = [
     'function mint(address _account, uint256 _amount)',
     'function balanceOf(address) view returns (uint)',
-    'function approve(address, uint)',
+    'function approve(address _account, uint256 _amount)',
   ]
   const [erc20, setErc20] = useState(
     new ethers.Contract(erc20Address, erc20Abi, provider),
@@ -79,7 +79,9 @@ export default function Demo() {
   // const spenderContractAddress = '0xBeC869B56cF9835E26f16f7E29E1e4Ba324634b8'
   // For local development [YET TO DEPLOY LOCAL CONTRACTS]
   // const spenderContractAddress = ''
-  const spenderContractAbi = ['function pullTokens(address,uint256)']
+  const spenderContractAbi = [
+    'function pullTokens(address _account,uint256 _amount)',
+  ]
   const [spenderContract, setSpenderContract] = useState(
     new ethers.Contract(spenderContractAddress, spenderContractAbi, provider),
   )
@@ -104,9 +106,11 @@ export default function Demo() {
     const originalBalance = balance
     const interval = setInterval(async function () {
       console.log('polling...')
+      console.log(`original balance is ${balance}`)
       const fetchedBalance = ethers.utils.formatEther(
         await erc20.balanceOf(wallet.address),
       )
+      console.log(`polled balance is ${fetchedBalance}`)
       if (fetchedBalance != originalBalance) {
         console.log('balance updated.')
         setBalance(fetchedBalance)
@@ -128,14 +132,19 @@ export default function Demo() {
           location.reload()
         }
       })
-    }, 30000)
+    }, 1000000)
   }
 
   const mint = async (generatedWallet) => {
     console.log('minting...')
     setBalanceChanging(true)
+    const nonce = await BlsWalletWrapper.Nonce(
+      generatedWallet.PublicKey(),
+      network.verificationGateway,
+      provider,
+    )
     const bundle = generatedWallet.sign({
-      nonce: (await generatedWallet.Nonce()).toString(),
+      nonce: nonce,
       actions: [
         {
           ethValue: 0,
@@ -152,19 +161,24 @@ export default function Demo() {
     pollBalance(generatedWallet)
   }
 
-  // On a frontend event, create a transfer and make a fake request for permission
+  // On a frontend event, create a transaction
   const approveAndPullTokens = async () => {
     console.log('approving / pulling...')
     setBalanceChanging(true)
-    console.log(await wallet.Nonce())
+    const nonce = await BlsWalletWrapper.Nonce(
+      wallet.PublicKey(),
+      network.verificationGateway,
+      provider,
+    )
+    console.log(`nonce is ${nonce}`)
     const bundle = wallet.sign({
-      nonce: (await wallet.Nonce()).toString(),
+      nonce: nonce,
       actions: [
         {
           ethValue: 0,
           contractAddress: erc20.address,
           encodedFunction: erc20.interface.encodeFunctionData('approve', [
-            '0xBeC869B56cF9835E26f16f7E29E1e4Ba324634b8',
+            spenderContract.address,
             ethers.BigNumber.from(10).pow(18),
           ]),
         },
@@ -178,7 +192,10 @@ export default function Demo() {
         },
       ],
     })
-    await aggregator.add(bundle)
+    console.log('bundle is:')
+    console.log(bundle)
+    console.log('logging aggregator')
+    console.log(await aggregator.add(bundle))
     console.log('approval / pull txs submitted')
     // Store transfer success / failure in state to be represented in the frontend
     pollBalance(wallet)

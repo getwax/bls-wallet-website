@@ -4,7 +4,19 @@ Reading from, and writing to, the chain is managed in `pages/demo.js`. To select
 
 ## Getting Started
 
-First, run the development server:
+First, install any relevant packages:
+
+```bash
+npm install
+```
+
+Sometimes, react-reveal can be a bit temperamental after the first npm install. It's not great practice but you can fix this with:
+
+```bash
+npm install --force
+```
+
+Once packages are installed, run the development server:
 
 ```bash
 npm run dev
