@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "bls-wallet-clients": "^0.6.0",
+    "bls-wallet-clients": "^0.7.3",
     "ethers": "^5.7.0",
     "next": "12.2.5",
     "react": "18.2.0",

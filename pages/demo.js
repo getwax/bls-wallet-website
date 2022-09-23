@@ -120,6 +120,7 @@ export default function Demo() {
       }
     }, 2000)
     setTimeout(() => {
+      console.log('timing out')
       setBalanceChanging(false)
       clearInterval(interval)
       Swal.fire({
@@ -132,7 +133,7 @@ export default function Demo() {
           location.reload()
         }
       })
-    }, 1000000)
+    }, 100000)
   }
 
   const mint = async (generatedWallet) => {
