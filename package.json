@@ -2,6 +2,9 @@
   "name": "bls-wallet-website",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "yarn": ">=1.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
