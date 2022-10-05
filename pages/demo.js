@@ -65,6 +65,7 @@ export default function Demo() {
       return null;
     }
     const originalBalance = balance
+    let balanceUpdated = false;
     const interval = setInterval(async function () {
       console.log('polling...')
       console.log(`original balance is ${balance}`)
@@ -73,6 +74,7 @@ export default function Demo() {
       )
       console.log(`polled balance is ${fetchedBalance}`)
       if (fetchedBalance !== originalBalance) {
+        balanceUpdated = true;
         console.log('balance updated.')
         setBalance(fetchedBalance)
         setBalanceChanging(false)
@@ -81,7 +83,7 @@ export default function Demo() {
       }
     }, 2000)
     setTimeout(() => {
-      if (!balanceChanging) {
+      if (balanceUpdated) {
         return null;
       }
       console.log('timing out')
