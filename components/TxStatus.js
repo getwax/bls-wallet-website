@@ -16,7 +16,7 @@ function TxStatus({ setTxFinished, txHash, toastMethod }) {
 
     toastMethod(receipt.blockNumber);
     setTxFinished(txHash);
-  }, 5000);
+  }, 4000);
 
   return (
     <div />
