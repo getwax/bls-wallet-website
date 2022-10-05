@@ -81,6 +81,9 @@ export default function Demo() {
       }
     }, 2000)
     setTimeout(() => {
+      if (!balanceChanging) {
+        return null;
+      }
       console.log('timing out')
       setBalanceChanging(false)
       clearInterval(interval)
