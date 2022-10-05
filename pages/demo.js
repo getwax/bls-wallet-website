@@ -6,8 +6,12 @@ import { ethers } from 'ethers'
 import { Aggregator, BlsWalletWrapper } from 'bls-wallet-clients'
 import Fade from 'react-reveal'
 import Swal from 'sweetalert2'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { NETWORKS, ERC20_ADDRESS, SPENDER_CONTRACT_ADDRESS } from '../constants';
+import TxStatus from '../components/TxStatus';
+import BlockExplorerLink from '../components/BlockExplorerLink';
 
 export default function Demo() {
   // Create a private key
@@ -18,6 +22,18 @@ export default function Demo() {
   const [balance, setBalance] = useState('0.0')
   const [balanceChanging, setBalanceChanging] = useState(true)
   const [firstMint, setFirstMint] = useState(false)
+  const [pendingTxs, setPendingTxs] = useState([]);
+  const [txBlockNumber, setTxBlockNumber] = useState('');
+
+  useEffect(() => {
+    if (txBlockNumber) {
+      toast(<BlockExplorerLink blockNumber={txBlockNumber} />,
+      {
+        position: 'bottom-right',
+      });
+    }
+    setTxBlockNumber('');
+  }, [setTxBlockNumber, txBlockNumber]);
 
   // Default network is Goerli
   const network = NETWORKS.arbitrumGoerli;
@@ -37,7 +53,11 @@ export default function Demo() {
   const spenderContractAbi = [
     'function pullTokens(address _account,uint256 _amount)',
   ]
-  const spenderContract = new ethers.Contract(SPENDER_CONTRACT_ADDRESS.arbitrumGoerli, spenderContractAbi, provider);
+  const spenderContract = new ethers.Contract(
+    SPENDER_CONTRACT_ADDRESS.arbitrumGoerli,
+    spenderContractAbi,
+    provider
+  );
 
   // We want to generate the wallet only once so we do so within a useEffect() hook, without any dependencies so it doesn't re-run
   useEffect(() => {
@@ -102,6 +122,11 @@ export default function Demo() {
     }, 100000)
   }
 
+  const removePendingTxs = (hash) => {
+    const newPendingTxs = pendingTxs.filter((tx) => tx !== hash);
+    setPendingTxs(newPendingTxs);
+  };
+
   const mint = async () => {
     console.log('minting...')
     setBalanceChanging(true)
@@ -124,7 +149,9 @@ export default function Demo() {
       ],
     })
     const aggregator = new Aggregator(network.aggregatorUrl);
-    console.log(await aggregator.add(bundle))
+    await aggregator.add(bundle);
+    // console.log('tx hash: ', result?.hash);
+    // setPendingTxs([...pendingTxs, result?.hash]);
     console.log('mint tx submitted')
     pollBalance()
   }
@@ -164,7 +191,9 @@ export default function Demo() {
     console.log(bundle)
     console.log('logging aggregator')
     const aggregator = new Aggregator(network.aggregatorUrl);
-    console.log(await aggregator.add(bundle))
+    const result = await aggregator.add(bundle);
+    console.log('tx hash: ', result?.hash);
+    setPendingTxs([...pendingTxs, result?.hash]);
     console.log('approval / pull txs submitted')
     // Store transfer success / failure in state to be represented in the frontend
     pollBalance()
@@ -310,6 +339,18 @@ export default function Demo() {
         )}
         <div style={{ height: '80px' }} />
       </div>
+      {pendingTxs.map((tx) => (
+        <TxStatus
+          toastMethod={setTxBlockNumber}
+          setTxFinished={removePendingTxs}
+          txHash={tx}
+          key={tx}
+        />
+      ))}
+      <ToastContainer
+        autoClose={false}
+        closeOnClick={false}
+      />
     </>
   )
 }
