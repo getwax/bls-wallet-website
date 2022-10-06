@@ -101,19 +101,9 @@ export default function Home() {
         <span style={{ height: '40px' }} />
         <div className={styles.teamMembers}>
           <TeamMember
-            name="Jacob Caban-Tomski "
+            name="Jacob Caban-Tomski"
             role="Software Developer"
             picturePath="/jacob.png"
-          />
-          <TeamMember
-            name="Kautuk Kundan"
-            role="Software Developer"
-            picturePath="/kautuk.png"
-          />
-          <TeamMember
-            name="James Zaki"
-            role="Project Lead"
-            picturePath="/james.png"
           />
           <TeamMember
             name="Blake Duncan"
@@ -121,14 +111,24 @@ export default function Home() {
             picturePath="/blake.png"
           />
           <TeamMember
+            name="John Guilding"
+            role="Software Developer"
+            picturePath="/john.png"
+          />
+          <TeamMember
+            name="Kautuk Kundan"
+            role="Software Developer"
+            picturePath="/kautuk.png"
+          />
+          <TeamMember
             name="Andrew Morris"
             role="Software Developer"
             picturePath="/andrew.png"
           />
           <TeamMember
-            name="John Guilding"
-            role="Software Developer"
-            picturePath="/john.png"
+            name="James Zaki"
+            role="Project Lead"
+            picturePath="/james.png"
           />
         </div>
         <span style={{ height: '40px' }} />
