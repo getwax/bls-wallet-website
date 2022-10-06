@@ -150,8 +150,7 @@ export default function Demo() {
     })
     const aggregator = new Aggregator(network.aggregatorUrl);
     await aggregator.add(bundle);
-    // console.log('tx hash: ', result?.hash);
-    // setPendingTxs([...pendingTxs, result?.hash]);
+
     console.log('mint tx submitted')
     pollBalance()
   }
