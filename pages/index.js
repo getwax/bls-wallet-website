@@ -7,8 +7,14 @@ import Link from 'next/link'
 import FeatureCard from '../components/FeatureCard'
 import TeamMember from '../components/TeamMember'
 import Fade from 'react-reveal/Fade'
+import { useEffect, useState } from 'react'
+import { shuffled } from 'ethers/lib/utils'
 
 export default function Home() {
+  // Need to initially not shuffle to match server-side rendering
+  const [shouldShuffle, setShouldShuffle] = useState(false)
+  useEffect(() => setShouldShuffle(true), [])
+
   return (
     <>
       <Head>
@@ -100,36 +106,40 @@ export default function Home() {
         </Fade>
         <span style={{ height: '40px' }} />
         <div className={styles.teamMembers}>
-          <TeamMember
-            name="Jacob Caban-Tomski"
-            role="Software Developer"
-            picturePath="/jacob.png"
-          />
-          <TeamMember
-            name="Blake Duncan"
-            role="Software Developer"
-            picturePath="/blake.png"
-          />
-          <TeamMember
-            name="John Guilding"
-            role="Software Developer"
-            picturePath="/john.png"
-          />
-          <TeamMember
-            name="Kautuk Kundan"
-            role="Software Developer"
-            picturePath="/kautuk.png"
-          />
-          <TeamMember
-            name="Andrew Morris"
-            role="Software Developer"
-            picturePath="/andrew.png"
-          />
-          <TeamMember
-            name="James Zaki"
-            role="Project Lead"
-            picturePath="/james.png"
-          />
+          {
+            (shouldShuffle ? shuffled : echo)([
+              <TeamMember
+                name="Jacob Caban-Tomski"
+                role="Software Developer"
+                picturePath="/jacob.png"
+              />,
+              <TeamMember
+                name="Blake Duncan"
+                role="Software Developer"
+                picturePath="/blake.png"
+              />,
+              <TeamMember
+                name="John Guilding"
+                role="Software Developer"
+                picturePath="/john.png"
+              />,
+              <TeamMember
+                name="Kautuk Kundan"
+                role="Software Developer"
+                picturePath="/kautuk.png"
+              />,
+              <TeamMember
+                name="Andrew Morris"
+                role="Software Developer"
+                picturePath="/andrew.png"
+              />,
+              <TeamMember
+                name="James Zaki"
+                role="Project Lead"
+                picturePath="/james.png"
+              />,
+            ])
+          }
         </div>
         <span style={{ height: '40px' }} />
         <Link href="/demo">
@@ -153,4 +163,8 @@ export default function Home() {
       <div style={{ height: '80px' }} />
     </>
   )
+}
+
+function echo(value) {
+  return value
 }
