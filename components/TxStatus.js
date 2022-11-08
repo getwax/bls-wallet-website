@@ -1,21 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import { Aggregator } from 'bls-wallet-clients';
 
-import { NETWORKS } from "../constants";
+import { NETWORKS } from '../constants';
 
 // This function will accept a transaction hash and will
 // fire a toast when the transaction is completed.
-function TxStatus({ setTxFinished, txHash, toastMethod }) {
-
+function TxStatus({ setTxFinished, bundleHash, toastMethod }) {
   useInterval(async () => {
-    const receipt = await getTransactionReceipt(txHash);
+    const receipt = await getTransactionReceipt(bundleHash);
 
     if (receipt === undefined) {
       return;
     }
 
-    toastMethod(receipt.blockNumber);
-    setTxFinished(txHash);
+    toastMethod(receipt.transactionHash);
+    setTxFinished(bundleHash);
   }, 4000);
 
   return (
@@ -24,7 +23,6 @@ function TxStatus({ setTxFinished, txHash, toastMethod }) {
 }
 
 export default TxStatus;
-
 
 function useInterval(callback, delay) {
   const savedCallback = useRef(callback);
@@ -51,11 +49,11 @@ function useInterval(callback, delay) {
 
 async function getTransactionReceipt(hash) {
   const aggregator = new Aggregator(NETWORKS.arbitrumGoerli.aggregatorUrl);
-  const bundleReceipt= await aggregator.lookupReceipt(hash);
+  const bundleReceipt = await aggregator.lookupReceipt(hash);
 
   return (
     bundleReceipt && {
-      transactionHash: hash,
+      transactionHash: bundleReceipt.transactionHash,
       transactionIndex: bundleReceipt.transactionIndex,
       blockHash: bundleReceipt.blockHash,
       blockNumber: bundleReceipt.blockNumber,
