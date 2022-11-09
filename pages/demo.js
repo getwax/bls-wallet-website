@@ -23,17 +23,17 @@ export default function Demo() {
   const [balanceChanging, setBalanceChanging] = useState(true)
   const [firstMint, setFirstMint] = useState(false)
   const [pendingTxs, setPendingTxs] = useState([]);
-  const [txBlockNumber, setTxBlockNumber] = useState('');
+  const [txHash, setTxHash] = useState('');
 
   useEffect(() => {
-    if (txBlockNumber) {
-      toast(<BlockExplorerLink blockNumber={txBlockNumber} />,
+    if (txHash) {
+      toast(<BlockExplorerLink txHash={txHash} />,
       {
         position: 'bottom-right',
       });
     }
-    setTxBlockNumber('');
-  }, [setTxBlockNumber, txBlockNumber]);
+    setTxHash('');
+  }, [setTxHash, txHash]);
 
   // Default network is Goerli
   const network = NETWORKS.arbitrumGoerli;
@@ -340,9 +340,9 @@ export default function Demo() {
       </div>
       {pendingTxs.map((tx) => (
         <TxStatus
-          toastMethod={setTxBlockNumber}
+          toastMethod={setTxHash}
           setTxFinished={removePendingTxs}
-          txHash={tx}
+          bundleHash={tx}
           key={tx}
         />
       ))}
