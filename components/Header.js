@@ -13,7 +13,7 @@ export default function Header() {
         </a>
       </Link>
       <div className={styles.logoLinks}>
-        <Link href="https://discord.gg/AddBwR4ZTz">
+        <Link href="https://discord.gg/hGDmAhcRyz">
           <a
             className={styles.logoLink}
             style={{ position: 'relative', top: '1px' }}
