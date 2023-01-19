@@ -53,13 +53,16 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="https://github.com/web3well/bls-wallet">
-              <div className={styles.button}>
-                <div className={styles.buttonSecondary}>
-                  <span>Github</span>
-                </div>
+            <a
+              href="https://github.com/web3well/bls-wallet"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.button}
+            >
+              <div className={styles.buttonSecondary}>
+                <span>Github</span>
               </div>
-            </Link>
+            </a>
           </div>
         </Fade>
         <span style={{ height: '40px' }} />
@@ -115,31 +118,37 @@ export default function Home() {
                 name="Jacob Caban-Tomski"
                 memberRole="Software Developer"
                 picturePath="/jacob.png"
+                key="jacob"
               />,
               <TeamMember
                 name="Blake Duncan"
                 memberRole="Software Developer"
                 picturePath="/blake.png"
+                key="blake"
               />,
               <TeamMember
                 name="John Guilding"
                 memberRole="Software Developer"
                 picturePath="/john.png"
+                key="john"
               />,
               <TeamMember
                 name="Kautuk Kundan"
                 memberRole="Software Developer"
                 picturePath="/kautuk.png"
+                key="kautuk"
               />,
               <TeamMember
                 name="Andrew Morris"
                 memberRole="Software Developer"
                 picturePath="/andrew.png"
+                key="andrew"
               />,
               <TeamMember
                 name="James Zaki"
                 memberRole="Project Lead"
                 picturePath="/james.png"
+                key="james"
               />,
             ])
           }

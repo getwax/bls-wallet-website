@@ -11,7 +11,7 @@ export default function TeamMember(props) {
           className={styles.cardImage}
           src={picturePath}
           alt="A picture of a team member of BLS wallet"
-          width={100}
+          width={120}
           height={120}
         />
         <div className={styles.cardContent}>
