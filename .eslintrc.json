@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "rules": {
+    "@typescript-eslint/space-before-blocks": "off",
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "consistent-return": "off",
+    "no-restricted-globals": "warn",
+    "react/prop-types": "off",
+    "no-use-before-define": [
+      "off",
+      {
+        "functions": true,
+        "classes": true,
+        "variables": true
+      }
+    ]
+  }
+}

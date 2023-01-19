@@ -30,6 +30,7 @@
   width: 160px;
   height: 40px;
   margin: 8px;
+  cursor: pointer;
 }
 
 .buttonPrimary {

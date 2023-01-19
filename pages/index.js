@@ -1,19 +1,19 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Header from '../components/Header'
-import walletLogo from '../public/walletLogo.png'
-import Link from 'next/link'
-import FeatureCard from '../components/FeatureCard'
-import TeamMember from '../components/TeamMember'
-import Fade from 'react-reveal/Fade'
-import { useEffect, useState } from 'react'
-import { shuffled } from 'ethers/lib/utils'
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import Fade from 'react-reveal/Fade';
+import { useEffect, useState } from 'react';
+import { shuffled } from 'ethers/lib/utils';
+import styles from '../styles/Home.module.css';
+import Header from '../components/Header';
+import walletLogo from '../public/walletLogo.png';
+import FeatureCard from '../components/FeatureCard';
+import TeamMember from '../components/TeamMember';
 
 export default function Home() {
   // Need to initially not shuffle to match server-side rendering
-  const [shouldShuffle, setShouldShuffle] = useState(false)
-  useEffect(() => setShouldShuffle(true), [])
+  const [shouldShuffle, setShouldShuffle] = useState(false);
+  useEffect(() => setShouldShuffle(true), []);
 
   return (
     <>
@@ -46,19 +46,19 @@ export default function Home() {
         <Fade bottom>
           <div className={styles.buttons}>
             <Link href="/demo">
-              <a className={styles.button}>
+              <div className={styles.button}>
                 <div className={styles.buttonPrimary}>
                   <span>Try the demo</span>
                 </div>
-              </a>
+              </div>
             </Link>
 
             <Link href="https://github.com/web3well/bls-wallet">
-              <a target="_blank" className={styles.button}>
+              <div className={styles.button}>
                 <div className={styles.buttonSecondary}>
                   <span>Github</span>
                 </div>
-              </a>
+              </div>
             </Link>
           </div>
         </Fade>
@@ -73,17 +73,20 @@ export default function Home() {
             title="Social key recovery"
             description="Recover a BLS contract wallet via a nominated Ethereum address. This can be a multisig address, effectively enabling social recovery."
             logoPath="/key.svg"
-          />{' '}
+          />
+          {' '}
           <FeatureCard
             title="Smooth, multi-action UX"
             description="Boost conversion and engagement in your dApp with simpler transactions - no more pestering users with multiple prompts to sign transactions one-by-one."
             logoPath="/smooth.svg"
-          />{' '}
+          />
+          {' '}
           <FeatureCard
             title="Gasless transactions"
             description="Further simplify user onboarding with dApp-sponsored transactions. Users sign their dApp actions; dApps include a payment to tx.origin to reward those that pay the gas."
             logoPath="/gasless.svg"
-          />{' '}
+          />
+          {' '}
           <FeatureCard
             title="Wallet upgradeability"
             description="Using the TransparentProxy method, individual wallets can upgrade their implementation. Similarly, a wallet can nominate a new gateway to use to process its transactions. Full wallet upgradability, 100% user-controlled."
@@ -92,11 +95,11 @@ export default function Home() {
         </div>
         <span style={{ height: '40px' }} />
         <Link href="/demo">
-          <a className={styles.button}>
+          <div className={styles.button}>
             <div className={styles.buttonPrimary}>
               <span>Try the demo</span>
             </div>
-          </a>
+          </div>
         </Link>
         <span style={{ height: '40px' }} />
         <Fade bottom>
@@ -110,32 +113,32 @@ export default function Home() {
             (shouldShuffle ? shuffled : echo)([
               <TeamMember
                 name="Jacob Caban-Tomski"
-                role="Software Developer"
+                memberRole="Software Developer"
                 picturePath="/jacob.png"
               />,
               <TeamMember
                 name="Blake Duncan"
-                role="Software Developer"
+                memberRole="Software Developer"
                 picturePath="/blake.png"
               />,
               <TeamMember
                 name="John Guilding"
-                role="Software Developer"
+                memberRole="Software Developer"
                 picturePath="/john.png"
               />,
               <TeamMember
                 name="Kautuk Kundan"
-                role="Software Developer"
+                memberRole="Software Developer"
                 picturePath="/kautuk.png"
               />,
               <TeamMember
                 name="Andrew Morris"
-                role="Software Developer"
+                memberRole="Software Developer"
                 picturePath="/andrew.png"
               />,
               <TeamMember
                 name="James Zaki"
-                role="Project Lead"
+                memberRole="Project Lead"
                 picturePath="/james.png"
               />,
             ])
@@ -143,15 +146,16 @@ export default function Home() {
         </div>
         <span style={{ height: '40px' }} />
         <Link href="/demo">
-          <a className={styles.button}>
+          <div className={styles.button}>
             <div className={styles.buttonPrimary}>
               <span>Try the demo</span>
             </div>
-          </a>
+          </div>
         </Link>
         <div style={{ height: '80px' }} />
         <p>
-          BLS-Wallet is part of{' '}
+          BLS-Wallet is part of
+          {' '}
           <a href="https://appliedzkp.org" rel="noreferrer" target="_blank">
             Privacy & Scaling Explorations (PSE)
           </a>
@@ -162,9 +166,9 @@ export default function Home() {
       </div>
       <div style={{ height: '80px' }} />
     </>
-  )
+  );
 }
 
 function echo(value) {
-  return value
+  return value;
 }
