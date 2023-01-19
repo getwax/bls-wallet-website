@@ -2,7 +2,7 @@ export const NETWORKS = {
   arbitrumGoerli: {
     chainID: '0x66EED',
     name: 'Arbitrum Goerli',
-    rpcUrl: 'https://goerli-rollup.arbitrum.io/rpc',
+    rpcUrl: 'https://arb-goerli.g.alchemy.com/v2/5SnL3Mp93f5HDtbCHBZW2P6l-F43j8uU',
     aggregatorUrl: 'https://arbitrum-goerli.blswallet.org',
     verificationGateway: '0xae7DF242c589D479A5cF8fEA681736e0E0Bb1FB9',
   },
