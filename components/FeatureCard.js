@@ -1,16 +1,17 @@
-import styles from './FeatureCard.module.css'
-import Fade from 'react-reveal/Fade'
+import Fade from 'react-reveal/Fade';
+import styles from './FeatureCard.module.css';
 
 export default function FeatureCard(props) {
+  const { title, description, logoPath } = props;
   return (
     <Fade bottom>
       <div className={styles.card}>
         <div className={styles.cardHeader}>
-          <img src={props.logoPath} alt="logo" />
-          <h3 className={styles.title}>{props.title}</h3>
+          <img src={logoPath} alt="logo" />
+          <h3 className={styles.title}>{title}</h3>
         </div>
-        <p>{props.description}</p>
+        <p>{description}</p>
       </div>
     </Fade>
-  )
+  );
 }
