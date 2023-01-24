@@ -2,16 +2,9 @@ export const NETWORKS = {
   arbitrumGoerli: {
     chainID: '0x66EED',
     name: 'Arbitrum Goerli',
-    rpcUrl: 'https://goerli-rollup.arbitrum.io/rpc',
+    rpcUrl: process.env.NEXT_PUBLIC_ARBITRUM_GOERLI_RPC ?? 'https://goerli-rollup.arbitrum.io/rpc',
     aggregatorUrl: 'https://arbitrum-goerli.blswallet.org',
     verificationGateway: '0xae7DF242c589D479A5cF8fEA681736e0E0Bb1FB9',
-  },
-  arbitrumRinkeby: {
-    chainId: '421611',
-    name: 'Arbitrum Rinkeby',
-    rpcUrl: 'https://rinkeby.arbitrum.io/rpc',
-    aggregatorUrl: 'https://arbitrum-testnet.blswallet.org',
-    verificationGateway: '0x697B3E6258B08201d316b31D69805B5F666b62C8',
   },
   // For local dev make sure these values match your environment
   local: {
