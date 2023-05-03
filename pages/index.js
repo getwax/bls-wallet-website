@@ -49,7 +49,7 @@ export default function Home() {
             <Link href="/demo">
               <div className={styles.button}>
                 <div className={styles.buttonPrimary}>
-                  <span>Try the V1 demo</span>
+                  <span>Try the demo</span>
                 </div>
               </div>
             </Link>
@@ -67,6 +67,53 @@ export default function Home() {
           </div>
         </Fade>
         <span style={{ height: '40px' }} />
+
+        <div>
+          <h2>Why choose WAX</h2>
+          <p>
+            Using cryptographic primitives in a meaningful way can
+            be as hard as finding them in the first place. Research
+            and development of such primitives is even harder.
+            WAX integrates components developed by PSE, to
+            empower wallets, dapps and SDKs to readily improve
+            the experience of Ethereum account-holders.
+          </p>
+          <p>
+            For example, cheaper layer-2 transactions are unlocked
+            via use of proven signature schemes (BLS). Or better and
+            safer UX with choices in verification methods
+            using zero-knowledge proofs (coming soon). These
+            advantages can be brought into more products without
+            each entity doing their own R&D.
+          </p>
+        </div>
+
+        <div>
+          <h2>How WAX works</h2>
+          <p>
+            Cheaper transactions (and smart recovery) were achieved
+            by leveraging BLS Signature aggregation via: bespoke
+            smart contracts, client code, and a demo wallet extension
+            (formerly ‘BLS Wallet’). This was integrated as a prototype
+            into a popular L2 network.
+          </p>
+          <p>
+            With the advent of a new Account Abstraction standard (ERC4337),
+            and development of novel zk verification methods (from PSE),
+            the next version of smart contracts builds from a familiar/proven
+            contract foundation. On top of this we will be adding new
+            verification components to the existing BLS one, and showcasing
+            integrations for better ux for Ethereum account holders. These
+            Wallet Account eXperiments are WAX.
+          </p>
+          <p>
+            At a higher level WAX components are brought together
+            in an easy-to-use node module, EthDK.
+          </p>
+        </div>
+
+        {/* Feature section */}
+        <h2>Key Features</h2>
         <div className={styles.features}>
           <FeatureCard
             title="Reduce transaction fees"
@@ -101,7 +148,7 @@ export default function Home() {
         <Link href="/demo">
           <div className={styles.button}>
             <div className={styles.buttonPrimary}>
-              <span>Try the V1 demo</span>
+              <span>Try the demo</span>
             </div>
           </div>
         </Link>
@@ -152,7 +199,7 @@ export default function Home() {
         <Link href="/demo">
           <div className={styles.button}>
             <div className={styles.buttonPrimary}>
-              <span>Try the V1 demo</span>
+              <span>Try the demo</span>
             </div>
           </div>
         </Link>
