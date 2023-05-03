@@ -49,7 +49,7 @@ export default function Home() {
             <Link href="/demo">
               <div className={styles.button}>
                 <div className={styles.buttonPrimary}>
-                  <span>Try the demo</span>
+                  <span>WAX Wallet demo</span>
                 </div>
               </div>
             </Link>
@@ -148,7 +148,7 @@ export default function Home() {
         <Link href="/demo">
           <div className={styles.button}>
             <div className={styles.buttonPrimary}>
-              <span>Try the demo</span>
+              <span>WAX Wallet demo</span>
             </div>
           </div>
         </Link>
@@ -199,7 +199,7 @@ export default function Home() {
         <Link href="/demo">
           <div className={styles.button}>
             <div className={styles.buttonPrimary}>
-              <span>Try the demo</span>
+              <span>WAX Wallet demo</span>
             </div>
           </div>
         </Link>
