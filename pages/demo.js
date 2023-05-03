@@ -208,7 +208,7 @@ export default function Demo() {
       </Head>
       <Header />
       <div className={styles.main}>
-        <h1>See the BLS Wallet in action:</h1>
+        <h1>See the V1 wallet (BLS Wallet) in action:</h1>
         <span style={{ height: '40px' }} />
         <Fade bottom>
           <div style={{ position: 'relative', width: '100%' }}>
@@ -323,7 +323,7 @@ export default function Demo() {
             <div style={{ height: '32px' }} />
             <Fade bottom delay={5000}>
               <p style={{ textAlign: 'center' }}>
-                BLS-Wallet is part of
+                Wallet Account eXperiments (WAX) is part of
                 {' '}
                 <a
                   href="https://appliedzkp.org"

@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>BLS Wallet</title>
+        <title>WAX</title>
       </Head>
       <Header />
       <div className={styles.main}>
@@ -29,7 +29,9 @@ export default function Home() {
             width={200}
             height={200}
           />
-          <h1 className={styles.title}>Reduce transaction fees on evm-L2s</h1>
+          <h1 className={styles.title}>
+            Wallet Account eXperiments (WAX)
+          </h1>
           <p
             style={{
               maxWidth: '760px',
@@ -37,9 +39,8 @@ export default function Home() {
               color: 'rgba(255,255,255,0.75)',
             }}
           >
-            Compress transactions with BLS signature aggregation. Our smart
-            contract wallet also introduces recovery, multi-action, gasless
-            transactions and upgradeability.
+            Empowering wallets, dApps, and SDKs with innovative account
+            capabilities and seamless integration of advanced, audited components.
           </p>
         </Fade>
         <span style={{ height: '40px' }} />
@@ -48,7 +49,7 @@ export default function Home() {
             <Link href="/demo">
               <div className={styles.button}>
                 <div className={styles.buttonPrimary}>
-                  <span>Try the demo</span>
+                  <span>Try the V1 demo</span>
                 </div>
               </div>
             </Link>
@@ -100,7 +101,7 @@ export default function Home() {
         <Link href="/demo">
           <div className={styles.button}>
             <div className={styles.buttonPrimary}>
-              <span>Try the demo</span>
+              <span>Try the V1 demo</span>
             </div>
           </div>
         </Link>
@@ -133,12 +134,6 @@ export default function Home() {
                 key="john"
               />,
               <TeamMember
-                name="Kautuk Kundan"
-                memberRole="Software Developer"
-                picturePath="/kautuk.png"
-                key="kautuk"
-              />,
-              <TeamMember
                 name="Andrew Morris"
                 memberRole="Software Developer"
                 picturePath="/andrew.png"
@@ -157,13 +152,13 @@ export default function Home() {
         <Link href="/demo">
           <div className={styles.button}>
             <div className={styles.buttonPrimary}>
-              <span>Try the demo</span>
+              <span>Try the V1 demo</span>
             </div>
           </div>
         </Link>
         <div style={{ height: '80px' }} />
         <p>
-          BLS-Wallet is part of
+          Wallet Account eXperiments (WAX) is part of
           {' '}
           <a href="https://appliedzkp.org" rel="noreferrer" target="_blank">
             Privacy & Scaling Explorations (PSE)
