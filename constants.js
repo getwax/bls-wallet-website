@@ -3,7 +3,7 @@ export const NETWORKS = {
     chainID: '0x66EED',
     name: 'Arbitrum Goerli',
     rpcUrl: process.env.NEXT_PUBLIC_ARBITRUM_GOERLI_RPC ?? 'https://goerli-rollup.arbitrum.io/rpc',
-    aggregatorUrl: 'https://arbitrum-goerli.blswallet.org',
+    aggregatorUrl: 'https://arbitrum-goerli-2.blswallet.org/',
     verificationGateway: '0xE25229F29BAD62B1198F05F32169B70a9edc84b8',
   },
   // For local dev make sure these values match your environment
