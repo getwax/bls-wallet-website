@@ -39,8 +39,7 @@ export default function Home() {
               color: 'rgba(255,255,255,0.75)',
             }}
           >
-            Empowering wallets, dApps, and SDKs with innovative account
-            capabilities and seamless integration of advanced, audited components.
+            Helping wallets, dapps, and SDKs shine.
           </p>
         </Fade>
         <span style={{ height: '40px' }} />
