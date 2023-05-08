@@ -4,7 +4,7 @@ export const NETWORKS = {
     name: 'Arbitrum Goerli',
     rpcUrl: process.env.NEXT_PUBLIC_ARBITRUM_GOERLI_RPC ?? 'https://goerli-rollup.arbitrum.io/rpc',
     aggregatorUrl: 'https://arbitrum-goerli.blswallet.org',
-    verificationGateway: '0xae7DF242c589D479A5cF8fEA681736e0E0Bb1FB9',
+    verificationGateway: '0xE25229F29BAD62B1198F05F32169B70a9edc84b8',
   },
   // For local dev make sure these values match your environment
   local: {
@@ -12,12 +12,12 @@ export const NETWORKS = {
     name: 'Local hardhat node',
     rpcUrl: 'http://localhost:8545',
     aggregatorUrl: 'http://localhost:3000',
-    verificationGateway: '0x689A095B4507Bfa302eef8551F90fB322B3451c6',
+    verificationGateway: '0xE25229F29BAD62B1198F05F32169B70a9edc84b8',
   },
 };
 
 export const ERC20_ADDRESS = {
-  arbitrumGoerli: '0x56377a667C6370154d43aFc937998C750f0ca9bd',
+  arbitrumGoerli: '0x30e69AfbE8c2E8ECe8d6920512452C8d13F8962A',
   arbitrumRinkeby: '0x6030c15cD584574A5C694984678D50e5E9Aee1b6',
   // For local dev make sure this value matches your environment
   local: '',

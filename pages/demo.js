@@ -138,7 +138,7 @@ export default function Demo() {
       network.verificationGateway,
       provider,
     );
-    const bundle = wallet.sign({
+    const bundle = await wallet.signWithGasEstimate({
       nonce,
       actions: [
         {
@@ -168,7 +168,7 @@ export default function Demo() {
       provider,
     );
     console.log(`nonce is ${nonce}`);
-    const bundle = wallet.sign({
+    const bundle = await wallet.signWithGasEstimate({
       nonce,
       actions: [
         {
