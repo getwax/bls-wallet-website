@@ -9,7 +9,7 @@ class MyDocument extends Document {
         <Head>
           <meta
             name="description"
-            content="Part of the Ethereum Foundation's Privacy & Scaling Explorations Group, BLS Wallet reduces transaction fees on evm-L2s using signature aggregation."
+            content="As a member of the Ethereum Foundation's Privacy & Scaling Explorations Group, Wallet Account eXperiments (WAX) delivers novel account features to enhance wallets, dApps, and SDKs."
           />
           <meta charSet="utf-8" />
           <link

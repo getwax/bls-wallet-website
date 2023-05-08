@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <div className={styles.header}>
       <Link href="/">
-        <span className={styles.headerTitle}>BLS Wallet</span>
+        <span className={styles.headerTitle}>WAX</span>
       </Link>
       <div className={styles.logoLinks}>
         <a

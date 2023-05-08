@@ -10,7 +10,7 @@ export default function TeamMember(props) {
         <Image
           className={styles.cardImage}
           src={picturePath}
-          alt="A picture of a team member of BLS wallet"
+          alt={`Headshot of WAX team member, ${name}`}
           width={120}
           height={120}
         />

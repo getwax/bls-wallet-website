@@ -10,6 +10,10 @@
   margin-top: 80px;
 }
 
+.contentContainer {
+  max-width: 750px;
+}
+
 .title {
   font-size: 56px;
 }

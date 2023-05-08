@@ -204,29 +204,29 @@ export default function Demo() {
   return (
     <>
       <Head>
-        <title>BLS Wallet</title>
+        <title>WAX Wallet</title>
       </Head>
       <Header />
       <div className={styles.main}>
-        <h1>See the BLS Wallet in action:</h1>
+        <h1>See the WAX wallet v1 in action:</h1>
         <span style={{ height: '40px' }} />
         <Fade bottom>
           <div style={{ position: 'relative', width: '100%' }}>
             {!wallet.address && (
               <h3>
-                Please wait while we create your BLS wallet on the Goerli
+                Please wait while we create your WAX wallet on the Goerli
                 Testnet.
               </h3>
             )}
             {wallet.address && !firstMint && (
               <h3>
-                We created a BLS Wallet for you on the Goerli Testnet and are
+                We created a WAX Wallet for you on the Goerli Testnet and are
                 minting some demo tokens.
               </h3>
             )}
             {wallet.address && firstMint && (
               <h3>
-                We created a BLS Wallet for you on the Goerli Testnet and have
+                We created a WAX Wallet for you on the Goerli Testnet and have
                 minted some demo tokens.
               </h3>
             )}
@@ -302,7 +302,7 @@ export default function Demo() {
                     onClick={() => (balanceChanging
                       ? null
                       : Swal.fire({
-                        html: `<div style="text-align: left"><span style="font-size: 12px">Arbitrum testnet</span><h2>BLS Wallet</h2><h3>APPROVE $TOKEN TRANSFER</h3><p><strong>From: </strong>${wallet.address}</p><p><strong>To: </strong>${spenderContract.address}</p><p><strong>Info: </strong><a href="https://blswallet.org/">https://blswallet.org/</a></p><p><strong>Estimated gas fee: </strong>$O <span style="opacity: 1; display: inline; border-radius: 2px; background-color: #bcffbc; border: solid 1px #a5e1a5;font-size: 12px;padding: 2px 4px">dApp sponsored</span></p></div>`,
+                        html: `<div style="text-align: left"><span style="font-size: 12px">Arbitrum testnet</span><h2>WAX Wallet</h2><h3>APPROVE $TOKEN TRANSFER</h3><p><strong>From: </strong>${wallet.address}</p><p><strong>To: </strong>${spenderContract.address}</p><p><strong>Info: </strong><a href="https://getwax.org/">https://getwax.org/</a></p><p><strong>Estimated gas fee: </strong>$O <span style="opacity: 1; display: inline; border-radius: 2px; background-color: #bcffbc; border: solid 1px #a5e1a5;font-size: 12px;padding: 2px 4px">dApp sponsored</span></p></div>`,
                         confirmButtonText: 'Confirm',
                         denyButtonText: 'Reject',
                         showCloseButton: true,
@@ -323,7 +323,7 @@ export default function Demo() {
             <div style={{ height: '32px' }} />
             <Fade bottom delay={5000}>
               <p style={{ textAlign: 'center' }}>
-                BLS-Wallet is part of
+                Wallet Account eXperiments (WAX) is part of
                 {' '}
                 <a
                   href="https://appliedzkp.org"

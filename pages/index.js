@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>BLS Wallet</title>
+        <title>WAX</title>
       </Head>
       <Header />
       <div className={styles.main}>
@@ -29,7 +29,9 @@ export default function Home() {
             width={200}
             height={200}
           />
-          <h1 className={styles.title}>Reduce transaction fees on evm-L2s</h1>
+          <h1 className={styles.title}>
+            Wallet Account eXperiments (WAX)
+          </h1>
           <p
             style={{
               maxWidth: '760px',
@@ -37,9 +39,7 @@ export default function Home() {
               color: 'rgba(255,255,255,0.75)',
             }}
           >
-            Compress transactions with BLS signature aggregation. Our smart
-            contract wallet also introduces recovery, multi-action, gasless
-            transactions and upgradeability.
+            Helping wallets, dapps, and SDKs shine.
           </p>
         </Fade>
         <span style={{ height: '40px' }} />
@@ -48,7 +48,7 @@ export default function Home() {
             <Link href="/demo">
               <div className={styles.button}>
                 <div className={styles.buttonPrimary}>
-                  <span>Try the demo</span>
+                  <span>WAX demo</span>
                 </div>
               </div>
             </Link>
@@ -66,6 +66,57 @@ export default function Home() {
           </div>
         </Fade>
         <span style={{ height: '40px' }} />
+
+        <Fade bottom>
+          <div className={styles.contentContainer}>
+            <h2>Why WAX</h2>
+            <p>
+              Using cryptographic primitives in a meaningful way can
+              be as hard as finding them in the first place. Research
+              and development of such primitives is even harder.
+              WAX integrates components developed by PSE, to
+              empower wallets, dapps and SDKs to readily improve
+              the experience of Ethereum account-holders.
+            </p>
+            <p>
+              For example, cheaper layer-2 transactions are unlocked
+              via use of proven signature schemes (BLS). Or better and
+              safer UX with choices in verification methods
+              using zero-knowledge proofs (coming soon). These
+              advantages can be brought into more products without
+              each entity doing their own R&D.
+            </p>
+          </div>
+        </Fade>
+
+        <Fade bottom>
+          <div className={styles.contentContainer}>
+            <h2>How WAX works</h2>
+            <p>
+              Cheaper transactions (and smart recovery) were achieved
+              by leveraging BLS Signature aggregation via: bespoke
+              smart contracts, client code, and a demo wallet extension
+              (formerly ‘BLS Wallet’). This was integrated as a prototype
+              into a popular L2 network.
+            </p>
+            <p>
+              With the advent of a new Account Abstraction standard (ERC4337),
+              and development of novel zk verification methods (from PSE),
+              the next version of smart contracts builds from a familiar/proven
+              contract foundation. On top of this we will be adding new
+              verification components to the existing BLS one, and showcasing
+              integrations for better ux for Ethereum account holders. These
+              Wallet Account eXperiments are WAX.
+            </p>
+            <p>
+              At a higher level WAX components are brought together
+              in an easy-to-use node module, EthDK.
+            </p>
+          </div>
+        </Fade>
+
+        {/* Feature section */}
+        <h2>Key Features</h2>
         <div className={styles.features}>
           <FeatureCard
             title="Reduce transaction fees"
@@ -100,7 +151,7 @@ export default function Home() {
         <Link href="/demo">
           <div className={styles.button}>
             <div className={styles.buttonPrimary}>
-              <span>Try the demo</span>
+              <span>WAX demo</span>
             </div>
           </div>
         </Link>
@@ -133,12 +184,6 @@ export default function Home() {
                 key="john"
               />,
               <TeamMember
-                name="Kautuk Kundan"
-                memberRole="Software Developer"
-                picturePath="/kautuk.png"
-                key="kautuk"
-              />,
-              <TeamMember
                 name="Andrew Morris"
                 memberRole="Software Developer"
                 picturePath="/andrew.png"
@@ -157,13 +202,13 @@ export default function Home() {
         <Link href="/demo">
           <div className={styles.button}>
             <div className={styles.buttonPrimary}>
-              <span>Try the demo</span>
+              <span>WAX demo</span>
             </div>
           </div>
         </Link>
         <div style={{ height: '80px' }} />
         <p>
-          BLS-Wallet is part of
+          Wallet Account eXperiments (WAX) is part of
           {' '}
           <a href="https://appliedzkp.org" rel="noreferrer" target="_blank">
             Privacy & Scaling Explorations (PSE)
