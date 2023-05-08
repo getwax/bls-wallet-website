@@ -3,12 +3,18 @@ import Link from 'next/link';
 import styles from './Header.module.css';
 import discordLogo from '../public/discordLogo.svg';
 import githubLogo from '../public/githubHeaderLogo.svg';
+import waxGreenLogo from '../public/waxGreenLogo.png';
 
 export default function Header() {
   return (
     <div className={styles.header}>
       <Link href="/">
-        <span className={styles.headerTitle}>WAX</span>
+        <Image
+          width={80}
+          height={40}
+          src={waxGreenLogo}
+          alt="WAX logo"
+        />
       </Link>
       <div className={styles.logoLinks}>
         <a

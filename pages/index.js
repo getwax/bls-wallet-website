@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { shuffled } from 'ethers/lib/utils';
 import styles from '../styles/Home.module.css';
 import Header from '../components/Header';
-import walletLogo from '../public/walletLogo.png';
+import waxGreenLogo from '../public/waxGreenLogo.png';
 import FeatureCard from '../components/FeatureCard';
 import TeamMember from '../components/TeamMember';
 
@@ -24,13 +24,13 @@ export default function Home() {
       <div className={styles.main}>
         <Fade bottom>
           <Image
-            src={walletLogo}
+            src={waxGreenLogo}
             alt="an illustration of a wallet"
-            width={200}
+            width={500}
             height={200}
           />
           <h1 className={styles.title}>
-            Wallet Account eXperiments (WAX)
+            Wallet Account eXperiments
           </h1>
           <p
             style={{
