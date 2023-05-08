@@ -302,7 +302,7 @@ export default function Demo() {
                     onClick={() => (balanceChanging
                       ? null
                       : Swal.fire({
-                        html: `<div style="text-align: left"><span style="font-size: 12px">Arbitrum testnet</span><h2>WAX Wallet</h2><h3>APPROVE $TOKEN TRANSFER</h3><p><strong>From: </strong>${wallet.address}</p><p><strong>To: </strong>${spenderContract.address}</p><p><strong>Info: </strong><a href="https://blswallet.org/">https://blswallet.org/</a></p><p><strong>Estimated gas fee: </strong>$O <span style="opacity: 1; display: inline; border-radius: 2px; background-color: #bcffbc; border: solid 1px #a5e1a5;font-size: 12px;padding: 2px 4px">dApp sponsored</span></p></div>`,
+                        html: `<div style="text-align: left"><span style="font-size: 12px">Arbitrum testnet</span><h2>WAX Wallet</h2><h3>APPROVE $TOKEN TRANSFER</h3><p><strong>From: </strong>${wallet.address}</p><p><strong>To: </strong>${spenderContract.address}</p><p><strong>Info: </strong><a href="https://getwax.org/">https://getwax.org/</a></p><p><strong>Estimated gas fee: </strong>$O <span style="opacity: 1; display: inline; border-radius: 2px; background-color: #bcffbc; border: solid 1px #a5e1a5;font-size: 12px;padding: 2px 4px">dApp sponsored</span></p></div>`,
                         confirmButtonText: 'Confirm',
                         denyButtonText: 'Reject',
                         showCloseButton: true,
