@@ -38,7 +38,8 @@
 }
 
 .buttonPrimary {
-  background-color: #771cf9;
+  background-color: #76FFCE;
+  color: black;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -47,7 +48,7 @@
 }
 
 .buttonPrimary:hover {
-  background-color: #700cff;
+  background-color: #3dd49e;
 }
 
 .buttonSecondary {
