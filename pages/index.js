@@ -69,7 +69,7 @@ export default function Home() {
 
         <Fade bottom>
           <div className={styles.contentContainer}>
-            <h2>Why WAX</h2>
+            <h2>Why WAX (formerly BLS Wallet)</h2>
             <p>
               Using cryptographic primitives in a meaningful way can
               be as hard as finding them in the first place. Research
