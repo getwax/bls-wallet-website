@@ -30,7 +30,7 @@ export default function Header() {
         <a
           className={styles.logoLink}
           target="_blank"
-          href="https://github.com/web3well/bls-wallet"
+          href="https://github.com/getwax"
           rel="noreferrer"
         >
           <Image src={githubLogo} alt="github logo" />

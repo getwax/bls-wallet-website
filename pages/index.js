@@ -54,7 +54,7 @@ export default function Home() {
             </Link>
 
             <a
-              href="https://github.com/web3well/bls-wallet"
+              href="https://github.com/getwax"
               target="_blank"
               rel="noreferrer"
               className={styles.button}
