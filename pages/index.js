@@ -45,14 +45,6 @@ export default function Home() {
         <span style={{ height: '40px' }} />
         <Fade bottom>
           <div className={styles.buttons}>
-            {/* <Link href="/demo">
-              <div className={styles.button}>
-                <div className={styles.buttonPrimary}>
-                  <span>WAX demo</span>
-                </div>
-              </div>
-            </Link> */}
-
             <a
               href="https://github.com/getwax"
               target="_blank"
@@ -148,14 +140,6 @@ export default function Home() {
           />
         </div>
         <span style={{ height: '40px' }} />
-        {/* <Link href="/demo">
-          <div className={styles.button}>
-            <div className={styles.buttonPrimary}>
-              <span>WAX demo</span>
-            </div>
-          </div>
-        </Link> */}
-        <span style={{ height: '40px' }} />
         <Fade bottom>
           <h2 style={{ textAlign: 'center', fontSize: '40px' }}>
             Meet the team
@@ -198,14 +182,6 @@ export default function Home() {
             ])
           }
         </div>
-        <span style={{ height: '40px' }} />
-        {/* <Link href="/demo">
-          <div className={styles.button}>
-            <div className={styles.buttonPrimary}>
-              <span>WAX demo</span>
-            </div>
-          </div>
-        </Link> */}
         <div style={{ height: '80px' }} />
         <p>
           Wallet Account eXperiments (WAX) is part of
