@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 import Fade from 'react-reveal/Fade';
 import { useEffect, useState } from 'react';
 import { shuffled } from 'ethers/lib/utils';
