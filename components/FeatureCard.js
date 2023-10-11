@@ -1,4 +1,4 @@
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 import styles from './FeatureCard.module.css';
 
 export default function FeatureCard(props) {

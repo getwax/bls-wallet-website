@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 import { useEffect, useState } from 'react';
 import { shuffled } from 'ethers/lib/utils';
 import styles from '../styles/Home.module.css';
@@ -27,6 +27,7 @@ export default function Home() {
             alt="an illustration of a wallet"
             width={500}
             height={200}
+            priority
           />
           <h1 className={styles.title}>
             Wallet Account eXperiments
@@ -44,6 +45,16 @@ export default function Home() {
         <span style={{ height: '40px' }} />
         <Fade bottom>
           <div className={styles.buttons}>
+            <a
+              href="https://main.d2q4o4f8gnoq5j.amplifyapp.com/"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.button}
+            >
+              <div className={styles.buttonPrimary}>
+                <span>WAX demo</span>
+              </div>
+            </a>
             <a
               href="https://github.com/getwax"
               target="_blank"
