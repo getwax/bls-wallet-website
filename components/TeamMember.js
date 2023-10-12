@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 import styles from './TeamMember.module.css';
 
 export default function TeamMember(props) {

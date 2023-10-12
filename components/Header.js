@@ -15,6 +15,7 @@ export default function Header() {
           src={waxGreenLogo}
           alt="WAX logo"
           style={{ cursor: 'pointer' }}
+          priority
         />
       </Link>
       <div className={styles.logoLinks}>
