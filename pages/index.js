@@ -46,7 +46,7 @@ export default function Home() {
         <Fade bottom>
           <div className={styles.buttons}>
             <a
-              href="https://main.d2q4o4f8gnoq5j.amplifyapp.com/"
+              href="https://wax-demo.org/"
               target="_blank"
               rel="noreferrer"
               className={styles.button}
