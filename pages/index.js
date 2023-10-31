@@ -89,7 +89,28 @@ export default function Home() {
             </p>
           </div>
         </Fade>
-
+        <Fade bottom>
+          <div className={styles.aaCapabilities}>
+            <h2>New smart account capabilities...</h2>
+            <ul>
+              <li>
+                Lower fees with calldata compression
+                <ul>
+                  <li>Additionally BLS sig aggregation for L2s</li>
+                </ul>
+              </li>
+              <li>
+                Passkey validation
+                <ul>
+                  <li>Uses WebAuthn standard</li>
+                </ul>
+              </li>
+              <li>Recovery of a validation mechaism via hidden guardian(s)</li>
+              <li>Multiple actions in a single UserOperation</li>
+              <li>Email validation of UserOps via ZK Email primitive (aspirational)</li>
+            </ul>
+          </div>
+        </Fade>
         <Fade bottom>
           <div className={styles.contentContainer}>
             <h2>How WAX works</h2>
@@ -108,30 +129,6 @@ export default function Home() {
               At a higher level these components are brought together in
               an easy-to-use library, making it easier for others to understand and integrate.
             </p>
-          </div>
-        </Fade>
-
-        {/* Feature section */}
-        <Fade bottom>
-          <div className={styles.aaCapabilities}>
-            <h2>AA capabilities being integrated</h2>
-            <ul>
-              <li>
-                Lower fees with calldata compression
-                <ul>
-                  <li>Additionally BLS sig aggregation for L2s</li>
-                </ul>
-              </li>
-              <li>
-                Passkey validation
-                <ul>
-                  <li>Uses WebAuthn standard</li>
-                </ul>
-              </li>
-              <li>Recovery of a validation mechaism via hidden guardian(s)</li>
-              <li>Multiple actions in a single UserOperation</li>
-              <li>Email validation of UserOps via ZK Email primitive (aspirational)</li>
-            </ul>
           </div>
         </Fade>
         <span style={{ height: '40px' }} />
