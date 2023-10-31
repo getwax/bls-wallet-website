@@ -125,3 +125,34 @@
   grid-area: d;
   text-align: left;
 }
+
+.aaCapabilities {
+  margin: 20px 0;
+  padding: 25px 50px;
+  text-align: left;
+  background-color: #2e6652;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.aaCapabilities h2 {
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.aaCapabilities ul {
+  list-style-type: circle;
+  padding-left: 0;
+}
+
+.aaCapabilities li {
+  margin: 10px 0;
+  position: relative;
+  padding-left: 25px;
+}
+
+.aaCapabilities li > ul {
+  padding-left: 20px;
+}
+

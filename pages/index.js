@@ -6,7 +6,6 @@ import { shuffled } from 'ethers/lib/utils';
 import styles from '../styles/Home.module.css';
 import Header from '../components/Header';
 import waxGreenLogo from '../public/waxGreenLogo.png';
-import FeatureCard from '../components/FeatureCard';
 import TeamMember from '../components/TeamMember';
 
 export default function Home() {
@@ -71,22 +70,22 @@ export default function Home() {
 
         <Fade bottom>
           <div className={styles.contentContainer}>
-            <h2>Why WAX (formerly BLS Wallet)</h2>
+            <h2>Why WAX</h2>
             <p>
-              Using cryptographic primitives in a meaningful way can
-              be as hard as finding them in the first place. Research
-              and development of such primitives is even harder.
-              WAX integrates components developed by PSE, to
-              empower wallets, dapps and SDKs to readily improve
-              the experience of Ethereum account-holders.
+              Using cryptographic primitives in smart accounts can be
+              as hard as finding them in the first place. Research and
+              development of such primitives is even harder. WAX integrates
+              components developed by PSE for use in a 4337 smart account.
+              The goal is to empower wallets, dapps and SDKs more readily,
+              and thus improve the experience or Ethereum account-holders.
             </p>
             <p>
-              For example, cheaper layer-2 transactions are unlocked
-              via use of proven signature schemes (BLS). Or better and
-              safer UX with choices in verification methods
-              using zero-knowledge proofs (coming soon). These
-              advantages can be brought into more products without
-              each entity doing their own R&D.
+              For example, cheaper layer-2 transactions are unlocked via use
+              of proven signature schemes (BLS) combined with calldata compression
+              strategies. Or better and safer UX with choices in verification
+              methods using zero-knowledge proofs (coming soon). These
+              advantages can be brought into more products without each
+              entity doing their own R&D.
             </p>
           </div>
         </Fade>
@@ -95,60 +94,46 @@ export default function Home() {
           <div className={styles.contentContainer}>
             <h2>How WAX works</h2>
             <p>
-              Cheaper transactions (and smart recovery) were achieved
-              by leveraging BLS Signature aggregation via: bespoke
-              smart contracts, client code, and a demo wallet extension
-              (formerly ‘BLS Wallet’). This was integrated as a prototype
-              into a popular L2 network.
+              With the advent of the ERC4337 Account Abstraction standard,
+              and development of novel zk verification methods from PSE
+              groups, WAX seeks to integrate and showcase novel examples.
+              Integration of verification primitives is done in a modular way,
+              initially using SAFE modules and plugin design, but we will
+              keep an eye on how AA modular standards like ERC6900 settle.
             </p>
             <p>
-              With the advent of a new Account Abstraction standard (ERC4337),
-              and development of novel zk verification methods (from PSE),
-              the next version of smart contracts builds from a familiar/proven
-              contract foundation. On top of this we will be adding new
-              verification components to the existing BLS one, and showcasing
-              integrations for better ux for Ethereum account holders. These
-              Wallet Account eXperiments are WAX.
+              These Wallet Account eXperiments are WAX.
             </p>
             <p>
-              At a higher level WAX components are brought together
-              in an easy-to-use node module, EthDK.
+              At a higher level these components are brought together in
+              an easy-to-use library, making it easier for others to understand and integrate.
             </p>
           </div>
         </Fade>
 
         {/* Feature section */}
-        <h2>Key Features</h2>
-        <div className={styles.features}>
-          <FeatureCard
-            title="Reduce transaction fees"
-            description="The BLS Wallet module enables wallets to sign transactions with BLS Signatures. Aggregating them lowers gas fees for supporting wallets, and their users of layer 2 dApps."
-            logoPath="/fee.svg"
-          />
-          <FeatureCard
-            title="Social key recovery"
-            description="Recover a BLS contract wallet via a nominated Ethereum address. This can be a multisig address, effectively enabling social recovery."
-            logoPath="/key.svg"
-          />
-          {' '}
-          <FeatureCard
-            title="Smooth, multi-action UX"
-            description="Boost conversion and engagement in your dApp with simpler transactions - no more pestering users with multiple prompts to sign transactions one-by-one."
-            logoPath="/smooth.svg"
-          />
-          {' '}
-          <FeatureCard
-            title="Gasless transactions"
-            description="Further simplify user onboarding with dApp-sponsored transactions. Users sign their dApp actions; dApps include a payment to tx.origin to reward those that pay the gas."
-            logoPath="/gasless.svg"
-          />
-          {' '}
-          <FeatureCard
-            title="Wallet upgradeability"
-            description="Using the TransparentProxy method, individual wallets can upgrade their implementation. Similarly, a wallet can nominate a new gateway to use to process its transactions. Full wallet upgradability, 100% user-controlled."
-            logoPath="/upgrade.svg"
-          />
-        </div>
+        <Fade bottom>
+          <div className={styles.aaCapabilities}>
+            <h2>AA capabilities being integrated</h2>
+            <ul>
+              <li>
+                Lower fees with calldata compression
+                <ul>
+                  <li>Additionally BLS sig aggregation for L2s</li>
+                </ul>
+              </li>
+              <li>
+                Passkey validation
+                <ul>
+                  <li>Uses WebAuthn standard</li>
+                </ul>
+              </li>
+              <li>Recovery of a validation mechaism via hidden guardian(s)</li>
+              <li>Multiple actions in a single UserOperation</li>
+              <li>Email validation of UserOps via ZK Email primitive (aspirational)</li>
+            </ul>
+          </div>
+        </Fade>
         <span style={{ height: '40px' }} />
         <Fade bottom>
           <h2 style={{ textAlign: 'center', fontSize: '40px' }}>
@@ -164,12 +149,6 @@ export default function Home() {
                 memberRole="Software Developer"
                 picturePath="/jacob.png"
                 key="jacob"
-              />,
-              <TeamMember
-                name="Blake Duncan"
-                memberRole="Software Developer"
-                picturePath="/blake.png"
-                key="blake"
               />,
               <TeamMember
                 name="John Guilding"
