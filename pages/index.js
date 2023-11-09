@@ -77,7 +77,7 @@ export default function Home() {
               development of such primitives is even harder. WAX integrates
               components developed by PSE for use in a 4337 smart account.
               The goal is to empower wallets, dapps and SDKs more readily,
-              and thus improve the experience or Ethereum account-holders.
+              and thus improve the experience of Ethereum account-holders.
             </p>
             <p>
               For example, cheaper layer-2 transactions are unlocked via use
