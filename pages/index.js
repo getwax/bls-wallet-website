@@ -142,10 +142,10 @@ export default function Home() {
           {
             (shouldShuffle ? shuffled : echo)([
               <TeamMember
-                name="Jacob Caban-Tomski"
-                memberRole="Software Developer"
-                picturePath="/jacob.png"
-                key="jacob"
+                name="Jake C-T"
+                memberRole="Project Lead"
+                picturePath="/jake.png"
+                key="jake"
               />,
               <TeamMember
                 name="John Guilding"
@@ -158,12 +158,6 @@ export default function Home() {
                 memberRole="Software Developer"
                 picturePath="/andrew.png"
                 key="andrew"
-              />,
-              <TeamMember
-                name="James Zaki"
-                memberRole="Project Lead"
-                picturePath="/james.png"
-                key="james"
               />,
             ])
           }
