@@ -1,3 +1,5 @@
+> ‼️ **The WAX project has been sunsetted by PSE and further developments have been paused as of September 2024. See the following announcment in the [org README](https://github.com/getwax)** ‼️
+
 # bls-wallet-website
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
